@@ -62,7 +62,7 @@ public partial class cancel_showResult : System.Web.UI.Page
             { "bizType", "" },      //업무구분
             { "encCd", "" },        //암호화구분
             { "mchtTrdNo", "" },    //상점주문번호
-            { "trdNo", "" },        //세틀뱅크거래번호
+            { "trdNo", "" },        //헥토파이낸셜거래번호
             { "trdDt", "" },        //요청일자
             { "trdTm", "" },        //요청시간
             { "outStatCd", "" },    //결과코드
@@ -172,14 +172,14 @@ public partial class cancel_showResult : System.Web.UI.Page
 
 
         //요청파라미터 JSON에 세팅
-        //params, data 이름은 세틀로 전달되야 하는 값이니 변경하지 마십시오.
+        //params, data 이름은 헥토파이낸셜로 전달되야 하는 값이니 변경하지 마십시오.
         JObject reqParam = new JObject();
          reqParam.Add("params", JObject.FromObject(REQ_HEADER));
          reqParam.Add("data", JObject.FromObject(REQ_BODY));
 
 
         /** ======================================================================
-                                    API호출(가맹점->세틀) 및 응답 처리
+                                    API호출(가맹점->헥토파이낸셜) 및 응답 처리
             ======================================================================   */
         Dictionary<String, String> respParam = new Dictionary<String, String>();
         try
