@@ -95,7 +95,7 @@ public class SettleUtil
     /*=========================================================================================================
      *  로그 파일명 및 경로 수정
      *=========================================================================================================*/
-    private const string _LOG_DIR = "C:/npg/dotnet";            //로그 디렉터리(디렉터리가 존재하지 않으면, 로그 파일 생성하지 않습니다.)
+    private const string _LOG_DIR = "C:/logs/hecto";               //로그 디렉터리(디렉터리가 존재하지 않으면, 로그 파일 생성하지 않습니다.) 예시: Windows "C:/logs/hecto", Linux "/var/log/hecto"
     private const string _LOG_FILE = "trans.log";               //일반 거래 로그 파일명
     private const string _NOTI_LOG_FILE = "noti_trans.log";     //노티 처리 로그 파일명
 
