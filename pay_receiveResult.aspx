@@ -16,7 +16,7 @@
         { "method",     String.IsNullOrEmpty(Request.Form["method"]) ? "" :     Request.Form["method"] },       //결제수단
         { "mchtTrdNo",  String.IsNullOrEmpty(Request.Form["mchtTrdNo"]) ? "" :  Request.Form["mchtTrdNo"] },    //상점주문번호
         { "mchtCustId", String.IsNullOrEmpty(Request.Form["mchtCustId"]) ? "" : Request.Form["mchtCustId"] },   //상점고객아이디
-        { "trdNo",      String.IsNullOrEmpty(Request.Form["trdNo"]) ? "" :      Request.Form["trdNo"] },        //세틀뱅크 거래번호
+        { "trdNo",      String.IsNullOrEmpty(Request.Form["trdNo"]) ? "" :      Request.Form["trdNo"] },        //헥토파이낸셜 거래번호
         { "trdAmt",     String.IsNullOrEmpty(Request.Form["trdAmt"]) ? "" :     Request.Form["trdAmt"] },       //거래금액
         { "mchtParam",  String.IsNullOrEmpty(Request.Form["mchtParam"]) ? "" :  Request.Form["mchtParam"] },    //상점 예약필드
         { "authDt",     String.IsNullOrEmpty(Request.Form["authDt"]) ? "" :     Request.Form["authDt"] },       //승인일시
@@ -76,7 +76,7 @@
     util.LogMessage(LOG_FILE, logStr);
 %>
 <html>
-<head><title>S'Pay 결제 결과 페이지</title>
+<head><title>헥토파이낸셜 결제 결과 페이지</title>
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <style type="text/css">

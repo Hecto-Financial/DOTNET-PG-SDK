@@ -49,7 +49,7 @@
 			<td class="right"><asp:Label ID="Label_mchtTrdNo" runat="server" /></td>
 		</tr>
 		<tr>
-			<td class="left">trdNo[세틀뱅크 거래번호]</td>
+			<td class="left">trdNo[헥토파이낸셜 거래번호]</td>
 			<td class="right"><asp:Label ID="Label_trdNo" runat="server" /></td>
 		</tr>
 		<tr>
