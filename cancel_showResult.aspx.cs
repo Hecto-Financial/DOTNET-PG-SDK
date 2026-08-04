@@ -62,7 +62,7 @@ public partial class cancel_showResult : System.Web.UI.Page
             { "bizType", "" },      //업무구분
             { "encCd", "" },        //암호화구분
             { "mchtTrdNo", "" },    //상점주문번호
-            { "trdNo", "" },        //세틀뱅크거래번호
+            { "trdNo", "" },        //헥토파이낸셜거래번호
             { "trdDt", "" },        //요청일자
             { "trdTm", "" },        //요청시간
             { "outStatCd", "" },    //결과코드
