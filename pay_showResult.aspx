@@ -8,7 +8,7 @@ String outRsltMsg       = String.IsNullOrEmpty(Request.Form["respOutRsltMsg"]) ?
 String method           = String.IsNullOrEmpty(Request.Form["respMethod"]) ? "" :           Request.Form["respMethod"];         //결제수단
 String mchtTrdNo        = String.IsNullOrEmpty(Request.Form["respMchtTrdNo"]) ? "" :        Request.Form["respMchtTrdNo"];      //상점주문번호
 String mchtCustId       = String.IsNullOrEmpty(Request.Form["respMchtCustId"]) ? "" :       Request.Form["respMchtCustId"];     //상점고객아이디
-String trdNo            = String.IsNullOrEmpty(Request.Form["respTrdNo"]) ? "" :            Request.Form["respTrdNo"];          //세틀뱅크 거래번호
+String trdNo            = String.IsNullOrEmpty(Request.Form["respTrdNo"]) ? "" :            Request.Form["respTrdNo"];          //헥토파이낸셜 거래번호
 String trdAmt           = String.IsNullOrEmpty(Request.Form["respTrdAmt"]) ? "" :           Request.Form["respTrdAmt"];         //거래금액
 String mchtParam        = String.IsNullOrEmpty(Request.Form["respMchtParam"]) ? "" :        Request.Form["respMchtParam"];      //상점예약필드
 String authDt           = String.IsNullOrEmpty(Request.Form["respAuthDt"]) ? "" :           Request.Form["respAuthDt"];         //승인일시
@@ -30,7 +30,7 @@ String csrcAmt          = String.IsNullOrEmpty(Request.Form["respCsrcAmt"]) ? ""
 <head>
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>S'Pay 결제 결과 페이지</title>
+<title>헥토파이낸셜 결제 결과 페이지</title>
 <style type="text/css">
     body            {font-family:굴림; font-size:10pt; color:#000000; text-decoration:none;}
     font            {font-family:굴림; font-size:10pt; color:#000000; text-decoration:none;}
@@ -78,7 +78,7 @@ String csrcAmt          = String.IsNullOrEmpty(Request.Form["respCsrcAmt"]) ? ""
             <td class="right"><%= mchtCustId %></td>
         </tr>
         <tr>
-            <td class="left">trdNo[세틀뱅크거래번호]</td>
+            <td class="left">trdNo[헥토파이낸셜거래번호]</td>
             <td class="right"><%= trdNo %></td>
         </tr>
         <tr>
