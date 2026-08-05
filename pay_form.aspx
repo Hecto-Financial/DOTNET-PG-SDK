@@ -43,7 +43,7 @@ function init(type){
     var random4 = ("000" + Math.random() * 10000 ).slice(-4).toString();
 
 
-    $('#STPG_payForm [name="custIp"]').val('<%= Request.ServerVariables.Get("REMOTE_ADDR") %>'); //고객 IP 세팅
+    $('#STPG_payForm [name="custIp"]').val('<%= System.Web.HttpUtility.JavaScriptStringEncode(Request.ServerVariables.Get("REMOTE_ADDR")) %>'); //고객 IP 세팅
     $('#STPG_payForm [name="trdDt"]').val(year + month + day);  //요청일자 세팅
     $('#STPG_payForm [name="trdTm"]').val(hours + mins + secs); //요청시간 세팅
     $('#STPG_payForm [name="mchtTrdNo"]').val("PAYMENT" + year + month + day + hours + mins + secs + random4);//주문번호 세팅
