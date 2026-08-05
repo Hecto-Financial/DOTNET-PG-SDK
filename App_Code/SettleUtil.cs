@@ -217,9 +217,23 @@ public class SettleUtil
         String responseStr = "";
         try
         {
-            WebRequest webRequest = WebRequest.Create(target_url);
+            /* TLS 보안 설정
+               PG 서버는 TLS 1.2 이상만 허용합니다. 운영체제 기본값에 의존하면 구형 Windows에서
+               TLS 1.0/1.1로 협상되어 통신이 실패할 수 있으므로 명시적으로 지정합니다.
+               TLS 1.3은 지원하지 않는 운영체제에서 예외가 발생하므로 실패 시 TLS 1.2만 사용합니다. */
+            try
+            {
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls13;
+            }
+            catch (NotSupportedException)
+            {
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            }
+
+            HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(target_url);
             webRequest.Method = "POST";                                    // POST로 설정
             webRequest.Timeout = timeout;                                  // Timeout 설정
+            webRequest.ReadWriteTimeout = timeout;                         // 응답 본문 수신 Timeout(미설정 시 기본 300초)
             byte[] byteArray = Encoding.UTF8.GetBytes(postData);           // byte[]로 변환
             webRequest.ContentType = "Application/json";                   // ContentType 설정
             webRequest.ContentLength = byteArray.Length;                   // Content 길이 설정
