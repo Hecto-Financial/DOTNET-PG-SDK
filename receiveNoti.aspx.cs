@@ -134,7 +134,11 @@ public partial class receiveNoti : System.Web.UI.Page
             그러므로 hash 오류건에 대해서는 오류 발생시 원인을 파악하여 즉시 수정 및 대처해 주셔야 합니다. 
             그리고 정상적으로 데이터를 처리한 경우에도 헥토파이낸셜에서 응답을 받지 못한 경우는 결제결과가 중복해서 나갈 수 있으므로 관련한 처리도 고려되어야 합니다
         */
-        if (hashCipher == pktHash)//해쉬값 일치
+        /* 해시 비교는 상수 시간 비교를 사용합니다.
+            == 는 처음 다른 문자에서 즉시 끝나 비교에 걸린 시간이
+            "몇 글자까지 맞았는지"를 노출합니다. 노티 수신 주소는 외부에
+            공개되어야 하므로 측정 가능한 표면입니다. */
+        if (FixedTimeEquals(hashCipher, pktHash))//해쉬값 일치
         {
             util.LogMessage(LOG_FILE, "[" + mchtTrdNo + "][SHA256 Hash Check] hashCipher[" + hashCipher + "] pktHash[" + pktHash + "] equals?[TRUE]");
             if ("0021" == outStatCd )//결제 성공
@@ -171,5 +175,19 @@ public partial class receiveNoti : System.Web.UI.Page
             util.LogMessage(LOG_FILE, "[" + mchtTrdNo + "][Result] FAIL");
         }
 
+    }
+
+    /// <summary>
+    /// 두 문자열을 상수 시간으로 비교합니다.
+    /// 길이가 다르면 즉시 false를 반환하며, 해시 길이는 고정이라 비밀이 아닙니다.
+    /// .NET Framework에는 CryptographicOperations.FixedTimeEquals가 없어 직접 구현합니다.
+    /// </summary>
+    private static bool FixedTimeEquals(string a, string b)
+    {
+        if (a == null || b == null) return false;
+        if (a.Length != b.Length) return false;
+        int diff = 0;
+        for (int i = 0; i < a.Length; i++) diff |= a[i] ^ b[i];
+        return diff == 0;
     }
 }
