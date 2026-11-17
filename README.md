@@ -24,6 +24,9 @@
 │  billkey_pay_form.aspx		<--- 신용카드 빌키 결제(2회차) 요청 폼
 │  billkey_pay_showResult.aspx	<--- 신용카드 빌키 결제 처리 및 결과 화면
 │  billkey_pay_showResult.aspx.cs	<--- 신용카드 빌키 결제 처리 및 결과 화면(코드페이지)
+│  delKey_form.aspx		<--- 신용카드 빌키 삭제 요청 폼
+│  delKey_showResult.aspx		<--- 신용카드 빌키 삭제 처리 및 결과 화면
+│  delKey_showResult.aspx.cs	<--- 신용카드 빌키 삭제 처리 및 결과 화면(코드페이지)
 │
 │  cancel_form.aspx		<--- 취소 메인 폼
 │  cancel_showResult.aspx		<--- 취소 처리 및 결과 화면
@@ -59,6 +62,8 @@
 - **cardReg_form.aspx**: 신용카드 **0원 등록(빌키발급) 결제창**을 호출하는 폼입니다. 실제 결제(승인) 없이 0원 인증으로 카드를 등록하고 정기결제용 빌키(`billKey`)를 발급받습니다. JS SDK의 `method="card"` + `methodSub="auth"` 조합으로 빌키발급창(`/card/cardAuth.do`)을 띄우며, `pay_encryptParams.aspx`와 `pay_receiveResult.aspx`를 재사용합니다.
 - **billkey_pay_form.aspx**: 발급받은 빌키로 2회차 결제를 요청하는 폼입니다. 결제수단(`method=CA`), 업무구분(`bizType=B0`)은 신용카드 빌키 결제 고정값입니다.
 - **billkey_pay_showResult.aspx**: 게이트웨이(`/spay/APICardActionPay.do`)와 Server to Server(JSON) 통신으로 빌키 결제를 요청하고 결과를 출력합니다. 빌키 결제 전용이며 카드번호 직접 입력(수기결제)은 지원하지 않습니다.
+- **delKey_form.aspx**: 발급받은 빌키를 삭제(해지)하는 폼입니다. 업무구분(`bizType=A1`)은 빌키 삭제 고정값입니다.
+- **delKey_showResult.aspx**: 게이트웨이(`/spay/APICardActionDelkey.do`)와 Server to Server(JSON) 통신으로 빌키 삭제를 요청하고 결과를 출력합니다. 금액이 없으므로 해시 조합의 금액 자리에 `"0"`을 사용하며, 빌키(`billKey`)는 평문으로 전송(암호화 대상 아님)합니다.
 
 > **신용카드 빌키 발급 정책**: 신용카드 빌키는 **UI 결제창(0원 등록)** 방식을 표준으로 제공합니다(`cardReg_form.aspx`). 가맹점이 카드번호를 직접 수집해 API로 빌키를 발급하는 방식(비/구인증 수기)은 표준 제공 범위에 포함되지 않으며, 필요한 경우 영업 담당자 또는 기술지원(pgsupport@hecto.co.kr)을 통해 별도 제공됩니다.
 
@@ -72,6 +77,7 @@
 - **휴대폰 자동연장 결제**: pay_form.aspx → pay_autoPayResult.aspx
 - **신용카드 0원 등록(빌키발급)**: cardReg_form.aspx → pay_encryptParams.aspx → (빌키발급 결제창) → pay_receiveResult.aspx(응답의 billKey 보관) → pay_showResult.aspx
 - **신용카드 빌키 결제(2회차)**: billkey_pay_form.aspx → billkey_pay_showResult.aspx
+- **신용카드 빌키 삭제**: delKey_form.aspx → delKey_showResult.aspx
 - **취소 처리 순서**: cancel_form.aspx → cancel_showResult.aspx
 - **노티 처리 순서**: receiveNoti.aspx
 
